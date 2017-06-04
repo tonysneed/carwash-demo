@@ -10,6 +10,8 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TransactionService } from 'app/services/transaction.service';
+import { TransactionHistoryService } from 'app/services/transaction-history.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    TransactionService,
+    TransactionHistoryService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

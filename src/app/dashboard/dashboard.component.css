@@ -75,3 +75,11 @@ md-sidenav-layout.m2app-dark {
 .app-progress {
   margin: 20px;
 }
+
+.app-error {
+  color: red;
+}
+
+.app-wash {
+  color: blue;
+}

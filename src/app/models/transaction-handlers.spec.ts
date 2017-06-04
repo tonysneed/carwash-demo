@@ -1,12 +1,12 @@
 import { Transaction } from 'app/models/transaction';
-import { TransactionHistory } from 'app/services/transaction-history';
+import { TransactionHistoryService } from 'app/services/transaction-history.service';
 import { TransactionHandler } from 'app/models/transaction-handlers';
 import { BasePriceHandler, DiscountHandler, TruckHandler, LicenseValidationHandler } from 'app/models/transaction-handlers';
 import { Vehicle, Car, Truck, TruckBed } from 'app/models/vehicle';
 
 describe('transaction handlers', () => {
 
-  let transHistory: TransactionHistory;
+  let transHistory: TransactionHistoryService;
   let licenseHandler: LicenseValidationHandler;
   let discountHandler: DiscountHandler;
   let truckHandler: TruckHandler;
@@ -23,7 +23,7 @@ describe('transaction handlers', () => {
       transaction = new Transaction();
       transaction.vehicle = car;
 
-      transHistory = new TransactionHistory();
+      transHistory = new TransactionHistoryService();
       licenseHandler = new LicenseValidationHandler();
       discountHandler = new DiscountHandler(transHistory, licenseHandler);
       truckHandler = new TruckHandler(discountHandler);
@@ -43,7 +43,7 @@ describe('transaction handlers', () => {
       existingTrans.vehicle = car;
       existingTrans.price = 5;
 
-      transHistory.transactions.push(existingTrans);
+      transHistory.addTransaction(existingTrans);
       baseHandler.handle(transaction);
       expect(transaction.price).toEqual(2.5);
     });
@@ -68,7 +68,7 @@ describe('transaction handlers', () => {
       transaction = new Transaction();
       transaction.vehicle = truck;
 
-      transHistory = new TransactionHistory();
+      transHistory = new TransactionHistoryService();
       licenseHandler = new LicenseValidationHandler();
       discountHandler = new DiscountHandler(transHistory, licenseHandler);
       truckHandler = new TruckHandler(discountHandler);
@@ -88,7 +88,7 @@ describe('transaction handlers', () => {
       existingTrans.vehicle = truck;
       existingTrans.price = 5;
 
-      transHistory.transactions.push(existingTrans);
+      transHistory.addTransaction(existingTrans);
       baseHandler.handle(transaction);
       expect(transaction.price).toEqual(5);
     });

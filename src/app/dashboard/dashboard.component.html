@@ -47,15 +47,20 @@
       <table cellspacing="10">
         <tr>
           <td>
-            <button class="app-raised-button" md-raised-button color="primary" (click)="showRequestInfo()">Get Price</button>
+            <button class="app-raised-button" md-raised-button color="primary" (click)="processTransaction()">Get Price</button>
           </td>
           <td>
-            <label *ngIf="priceInfo">Price Info: {{priceInfo}}</label>
+            <label class="app-wash" *ngIf="priceInfo">Price: {{priceInfo}}</label>
+            <label class="app-error" *ngIf="priceError">Car Wash Not Allowed: {{priceError}}.</label>
           </td>
         </tr>
         <tr>
           <td>
-            <button class="app-raised-button" md-raised-button color="accent">Start Wash</button>
+            <button class="app-raised-button" md-raised-button color="accent" (click)="processCarWash()">Start Wash</button>
+          </td>
+          <td>
+            <label class="app-wash" *ngIf="washInfo">{{washInfo}}.</label>
+            <label class="app-error" *ngIf="washError">Error: {{washError}}.</label>
           </td>
         </tr>
         <tr>

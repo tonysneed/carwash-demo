@@ -1,6 +1,6 @@
 import { Transaction } from 'app/models/transaction';
 import { Car, Truck, TruckBed } from 'app/models/vehicle';
-import { TransactionHistory } from 'app/services/transaction-history';
+import { TransactionHistoryService } from 'app/services/transaction-history.service';
 
 export abstract class TransactionHandler {
   constructor(private _successor?: TransactionHandler) {
@@ -48,15 +48,17 @@ export class TruckHandler extends TransactionHandler {
 
 export class DiscountHandler extends TransactionHandler {
 
-  constructor(private _transactionHistory: TransactionHistory, successor?: TransactionHandler) {
+  constructor(private _transactionHistory: TransactionHistoryService, successor?: TransactionHandler) {
     super(successor);
   }
 
   handle(transaction: Transaction): void {
-    const count = this._transactionHistory.transactions.reduce((n, trans) => {
+    const transactions = this._transactionHistory.getTransactions();
+    const count = transactions.reduce((n, trans) => {
       if (trans.vehicle.licensePlate === transaction.vehicle.licensePlate) {
         return ++n;
       }
+      return n;
     }, 0);
     if (count > 0) {
       transaction.price = transaction.price * .5;
