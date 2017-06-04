@@ -6,6 +6,6 @@ export class CarwashDemoPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.className('mat-toolbar-row')).getText();
   }
 }

@@ -1,28 +1,48 @@
-# CarwashDemo
+# Car Wash Demo
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
+This project was built with [Angular 4](http://angularjs.blogspot.com/2017/03/angular-400-now-available.html) using [Angular CLI](https://github.com/angular/angular-cli) version 1.0.6.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Clone the repository and run `npm install`.
 
-## Code scaffolding
+- Run `ng serve -o` to launch the app using a dev server. The app will load in your default browser at `http://localhost:4200/`, and it will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+- Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Build
+- Run `ng test` to execute the unit tests.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+- Run `ng e2e` to execute the end-to-end tests.
 
-## Running unit tests
+## Using the App
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Enter user first name (optional) and vehicle license
+- Select vehicle type
+- For trucks indicate if the bed has mud or is let down
+- You may include a wax option (would be used for for wash cycles when implemented)
+- Click 'Get Price' and the price will be displayed
+- If you wish select options to see how it affects the price
+- When satisfied with the options, click 'Start Wash' to save the transaction
+- Clicking 'Get Price' with a previously used license plate will discount the price
 
-## Running end-to-end tests
+## Git Branches
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Numbered branches indicate phases of development:
 
-## Further help
+- **01-add-models**: Models and specs for transactions and wash cycles
+- **02-add-styles**: [Material Design](https://material.angular.io/) styles
+- **03-add-routes**: Routing added with a dashboard component
+- **04-add-transactions**: Dashboard functionality for creating and saving transactions
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Application Internals
+
+- Business rules are implemented using the [Chain of Responsibility](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern) design pattern.
+  + Unit tests demonstrate usage of the pattern.
+
+- Wash cycles are implemented using the [State](https://en.wikipedia.org/wiki/State_pattern) design pattern.
+  + Unit tests demonstrate usage of the pattern.
+  + *Note that the UI for this feature is not implemented in this version of the app.*
+
+- Transaction history is currently maintained **in-memory**.
+  + This could be refactored using a Web API and/or local storage.
+

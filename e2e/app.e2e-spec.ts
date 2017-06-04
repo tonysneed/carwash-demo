@@ -7,8 +7,8 @@ describe('carwash-demo App', () => {
     page = new CarwashDemoPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display message saying ACME Car Wash', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('ACME Car Wash');
   });
 });
