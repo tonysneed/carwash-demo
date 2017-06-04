@@ -1,5 +1,5 @@
 import { Transaction } from 'app/models/transaction';
-import { BedPosition, Car, Truck, TruckBed } from 'app/models/vehicle';
+import { Car, Truck, TruckBed } from 'app/models/vehicle';
 import { TransactionHistory } from 'app/services/transaction-history';
 
 export abstract class TransactionHandler {
@@ -34,7 +34,7 @@ export class TruckHandler extends TransactionHandler {
 
   handle(transaction: Transaction): void {
     if (transaction.vehicle instanceof Truck) {
-      if (transaction.vehicle.truckBed.bedPosition === BedPosition.Down) {
+      if (transaction.vehicle.truckBed.isDown) {
         throw new Error('Truck bed let down');
       }
       if (transaction.vehicle.truckBed.isMuddy === true) {

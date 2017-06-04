@@ -10,11 +10,11 @@ export class Truck extends Vehicle {
 }
 
 export class TruckBed {
-  isMuddy: boolean;
-  bedPosition: BedPosition;
+  isMuddy = false;
+  isDown = false;
 }
 
-export enum BedPosition {
-  Up,
-  Down
+export enum VehicleType {
+  Car,
+  Truck
 }

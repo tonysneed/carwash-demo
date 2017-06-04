@@ -1,3 +1,69 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-container>
+
+  <div class="app-content">
+
+    <md-toolbar color="primary">
+      {{title}}
+      <span class="app-toolbar-filler"></span>
+    </md-toolbar>
+
+    <md-card class="app-input-section">
+      <table cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container>
+              <input mdInput [(ngModel)]="transactionInfo.firstName" placeholder="Your First Name">
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container>
+              <input mdInput [(ngModel)]="transactionInfo.licensePlate" placeholder="Vehicle License Plate">
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+    </md-card>
+
+    <md-card>
+      <md-select placeholder="Vehicle Type" [(ngModel)]="transactionInfo.vehicleType" name="vehicleType">
+        <md-option *ngFor="let vehicleType of vehicleTypes" [value]="vehicleType">
+          {{vehicleType}}
+        </md-option>
+      </md-select>
+    </md-card>
+
+    <md-card *ngIf="transactionInfo.vehicleType === 'Truck'">
+      Truck Bed: &nbsp;
+      <md-checkbox [(ngModel)]="transactionInfo.truckBed.isMuddy">Has Mud</md-checkbox>
+      <md-checkbox [(ngModel)]="transactionInfo.truckBed.isDown">Let Down</md-checkbox>
+    </md-card>
+
+    <md-card>
+      Wash Options: &nbsp;
+      <md-checkbox [(ngModel)]="transactionInfo.includeWax">Include Wax</md-checkbox>
+    </md-card>
+
+    <md-card>
+      <table cellspacing="10">
+        <tr>
+          <td>
+            <button class="app-raised-button" md-raised-button color="primary" (click)="showRequestInfo()">Get Price</button>
+          </td>
+          <td>
+            <label *ngIf="priceInfo">Price Info: {{priceInfo}}</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="app-raised-button" md-raised-button color="accent">Start Wash</button>
+          </td>
+        </tr>
+        <tr>
+          {{requestInfo}}
+        </tr>
+      </table>
+    </md-card>
+
+  </div>
+
+</md-sidenav-container>

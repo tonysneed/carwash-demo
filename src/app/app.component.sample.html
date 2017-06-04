@@ -1,0 +1,75 @@
+<md-sidenav-container>
+
+  <div class="app-content">
+
+    <md-toolbar color="primary">
+      {{title}}
+      <span class="app-toolbar-filler"></span>
+    </md-toolbar>
+
+    <md-card>
+      <button md-button>FLAT</button>
+      <button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
+      <button md-raised-button color="primary">PRIMARY RAISED</button>
+      <button md-raised-button color="accent">ACCENT RAISED</button>
+    </md-card>
+
+    <md-card>
+      <md-checkbox>Unchecked</md-checkbox>
+      <md-checkbox [checked]="true">Checked</md-checkbox>
+      <md-checkbox [indeterminate]="true">Indeterminate</md-checkbox>
+      <md-checkbox [disabled]="true">Disabled</md-checkbox>
+    </md-card>
+
+    <md-card>
+      <md-radio-button name="symbol">Alpha</md-radio-button>
+      <md-radio-button name="symbol">Beta</md-radio-button>
+      <md-radio-button name="symbol" disabled>Gamma</md-radio-button>
+    </md-card>
+
+    <md-card class="app-input-section">
+      <table cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container>
+              <input mdInput placeholder="First name">
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container>
+              <input mdInput placeholder="Long Last Name That Will Be Truncated">
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+    </md-card>
+
+    <md-card>
+      <md-list class="app-list">
+        <md-list-item *ngFor="let food of foods">
+          <h3 md-line>{{food.name}}</h3>
+          <p md-line class="demo-secondary-text">{{food.rating}}</p>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card>
+      <md-spinner class="app-spinner"></md-spinner>
+      <md-spinner color="accent" class="app-spinner"></md-spinner>
+    </md-card>
+
+    <md-card>
+      <label>
+        Determinate progress bar<!-- - {{progress}}%-->
+        <md-progress-bar
+            class="app-progress"
+            color="accent"
+            mode="determinate"
+            [value]="progress"
+            aria-label="Determinate progress-bar example"></md-progress-bar>
+      </label>
+    </md-card>
+
+  </div>
+
+</md-sidenav-container>

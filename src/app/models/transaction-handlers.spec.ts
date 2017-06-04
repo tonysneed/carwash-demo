@@ -2,7 +2,7 @@ import { Transaction } from 'app/models/transaction';
 import { TransactionHistory } from 'app/services/transaction-history';
 import { TransactionHandler } from 'app/models/transaction-handlers';
 import { BasePriceHandler, DiscountHandler, TruckHandler, LicenseValidationHandler } from 'app/models/transaction-handlers';
-import { Vehicle, Car, Truck, TruckBed, BedPosition } from 'app/models/vehicle';
+import { Vehicle, Car, Truck, TruckBed } from 'app/models/vehicle';
 
 describe('transaction handlers', () => {
 
@@ -102,7 +102,7 @@ describe('transaction handlers', () => {
     });
 
     it('transaction should reject truck with bed let down', () => {
-      truck.truckBed.bedPosition = BedPosition.Down;
+      truck.truckBed.isDown = true;
       const func = () => {
         baseHandler.handle(transaction);
       };
