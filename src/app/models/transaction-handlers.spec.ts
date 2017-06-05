@@ -22,8 +22,8 @@ describe('transaction handlers', () => {
       car.licensePlate = '1234567';
       transaction = new Transaction();
       transaction.vehicle = car;
-
       transHistory = new TransactionHistoryService();
+      transHistory.clearTransactions();
       licenseHandler = new LicenseValidationHandler();
       discountHandler = new DiscountHandler(transHistory, licenseHandler);
       truckHandler = new TruckHandler(discountHandler);
@@ -67,8 +67,8 @@ describe('transaction handlers', () => {
       truck.licensePlate = '1234567';
       transaction = new Transaction();
       transaction.vehicle = truck;
-
       transHistory = new TransactionHistoryService();
+      transHistory.clearTransactions();
       licenseHandler = new LicenseValidationHandler();
       discountHandler = new DiscountHandler(transHistory, licenseHandler);
       truckHandler = new TruckHandler(discountHandler);

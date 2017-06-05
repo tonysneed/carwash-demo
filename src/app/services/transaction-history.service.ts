@@ -10,6 +10,10 @@ export class TransactionHistoryService {
     return TransactionHistoryService.Transactions;
   }
 
+  clearTransactions(): Transaction[] {
+    return TransactionHistoryService.Transactions = [];
+  }
+
   addTransaction(transaction: Transaction) {
     TransactionHistoryService.Transactions.push(transaction);
   };
